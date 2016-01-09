@@ -1,0 +1,54 @@
+extends ./layout.jade
+
+block javascripts
+  script(src="./javascripts/tenholes.js")
+block stylesheets
+  link(href="./stylesheets/tenholes.css" media="all" rel="stylesheet")
+
+block content
+  div(ng-app="tenholes" ng-controller="MainController")
+    h1 Ten Holes
+
+    h3
+      label.display
+        input(type="radio" name="displayType" ng-model="displayType" value="alphabet")
+        | Alphabet
+      label.display
+        input(type="radio" name="displayType" ng-model="displayType" value="syllables")
+        | Syllables
+
+    h3(ng-show="displayType == 'syllables'")
+      label.key-selector(ng-repeat="key in KEYS")
+        input(type="radio" name="key" ng-model="$parent.key" value="{{key}}")
+        | {{key}}
+
+    table
+      tr.bended-blow(ng-repeat="offsets in OFFSETS.bendBlow.slice().reverse()")
+        td(rowspan="{{OFFSETS.bendBlow.length}}" ng-hide="$index")
+          .hole-head Bended<br/>Blow
+        td(ng-repeat="offset in offsets track by $index")
+          .hole(ng-show="offset && displayType == 'syllables'") {{getSyllable(offset+OFFSETS.blow[$index])}}
+          .hole(ng-show="offset && displayType == 'alphabet'") {{getKey(offset+OFFSETS.blow[$index])}}
+      tr.blow
+        td
+          .hole-head Blow
+        td(ng-repeat="offset in OFFSETS.blow")
+          .hole(ng-show="displayType == 'alphabet'") {{getKey(offset)}}
+          .hole(ng-show="displayType == 'syllables'") {{getSyllable(offset)}}
+      tr.body
+        td
+          .hole-head Hole
+        td(ng-repeat="offset in OFFSETS.blow")
+          .hole {{$index+1}}
+      tr.draw
+        td
+          .hole-head Draw
+        td(ng-repeat="offset in OFFSETS.draw")
+          .hole(ng-show="displayType == 'alphabet'") {{getKey(offset)}}
+          .hole(ng-show="displayType == 'syllables'") {{getSyllable(offset)}}
+      tr.bended-draw(ng-repeat="offsets in OFFSETS.bendDraw")
+        td(rowspan="{{OFFSETS.bendDraw.length}}" ng-hide="$index")
+          .hole-head Bended<br/>Draw
+        td(ng-repeat="offset in offsets track by $index")
+          .hole(ng-show="offset && displayType == 'syllables'") {{getSyllable(offset+OFFSETS.draw[$index])}}
+          .hole(ng-show="offset && displayType == 'alphabet'") {{getKey(offset+OFFSETS.draw[$index])}}
