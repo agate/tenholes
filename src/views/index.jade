@@ -51,8 +51,3 @@ block content
         td(ng-repeat="offset in offsets track by $index")
           .hole(ng-show="offset && displayType == 'syllables'") {{getSyllable(offset+OFFSETS.draw[$index])}}
           .hole(ng-show="offset && displayType == 'alphabet'") {{getKey(offset+OFFSETS.draw[$index])}}
-
-    hr
-    p.text-center
-      | Author 
-      a(href="https://agate.github.io") @agate
