@@ -3,52 +3,56 @@ extends ./layout.jade
 block javascripts
   script(src="./javascripts/main.js")
 block stylesheets
+  link(href='http://fonts.useso.com/css?family=Luckiest+Guy|Sansita+One' rel='stylesheet' type='text/css')
   link(href="./stylesheets/main.css" media="all" rel="stylesheet")
 
 block content
-  div(ng-app="tenholes" ng-controller="MainController")
+  .container(ng-app="tenholes" ng-controller="MainController")
     h1 Ten Holes
 
-    h3
-      label.display
-        input(type="radio" name="displayType" ng-model="displayType" value="alphabet")
-        | Alphabet
-      label.display
-        input(type="radio" name="displayType" ng-model="displayType" value="syllables")
-        | Syllables
+    p
+      .btn-group.btn-group-justified
+        label.btn.btn-danger(value="alphabet" ng-model="displayType" uib-btn-radio="'alphabet'") Alphabet
+        label.btn.btn-danger(value="syllables" ng-model="displayType" uib-btn-radio="'syllables'") Syllables
 
-    h3(ng-show="displayType == 'syllables'")
-      label.key-selector(ng-repeat="key in KEYS")
-        input(type="radio" name="key" ng-model="$parent.key" value="{{key}}")
-        | {{key}}
+    p
+      .btn-group.btn-group-justified(ng-show="displayType == 'syllables'")
+        label.btn.btn-danger(value="C" ng-model="key" uib-btn-radio="'C'") C
+        label.btn.btn-danger(value="F" ng-model="key" uib-btn-radio="'F'") F
+        label.btn.btn-danger(value="G" ng-model="key" uib-btn-radio="'G'") G
 
     table
       tr.bended-blow(ng-repeat="offsets in OFFSETS.bendBlow.slice().reverse()")
-        td(rowspan="{{OFFSETS.bendBlow.length}}" ng-hide="$index")
-          .hole-head Bended<br/>Blow
+        td.desc(rowspan="{{OFFSETS.bendBlow.length}}" ng-hide="$index")
+          .hole Bended<br/>Blow
         td(ng-repeat="offset in offsets track by $index")
           .hole(ng-show="offset && displayType == 'syllables'") {{getSyllable(offset+OFFSETS.blow[$index])}}
           .hole(ng-show="offset && displayType == 'alphabet'") {{getKey(offset+OFFSETS.blow[$index])}}
       tr.blow
-        td
-          .hole-head Blow
+        td.desc
+          .hole Blow
         td(ng-repeat="offset in OFFSETS.blow")
           .hole(ng-show="displayType == 'alphabet'") {{getKey(offset)}}
           .hole(ng-show="displayType == 'syllables'") {{getSyllable(offset)}}
       tr.body
-        td
-          .hole-head Hole
+        td.desc
+          .hole Hole
         td(ng-repeat="offset in OFFSETS.blow")
           .hole {{$index+1}}
       tr.draw
-        td
-          .hole-head Draw
+        td.desc
+          .hole Draw
         td(ng-repeat="offset in OFFSETS.draw")
           .hole(ng-show="displayType == 'alphabet'") {{getKey(offset)}}
           .hole(ng-show="displayType == 'syllables'") {{getSyllable(offset)}}
       tr.bended-draw(ng-repeat="offsets in OFFSETS.bendDraw")
-        td(rowspan="{{OFFSETS.bendDraw.length}}" ng-hide="$index")
-          .hole-head Bended<br/>Draw
+        td.desc(rowspan="{{OFFSETS.bendDraw.length}}" ng-hide="$index")
+          .hole Bended<br/>Draw
         td(ng-repeat="offset in offsets track by $index")
           .hole(ng-show="offset && displayType == 'syllables'") {{getSyllable(offset+OFFSETS.draw[$index])}}
           .hole(ng-show="offset && displayType == 'alphabet'") {{getKey(offset+OFFSETS.draw[$index])}}
+
+    hr
+    p.text-center
+      | Author 
+      a(href="https://agate.github.io") @agate

@@ -16,7 +16,7 @@ OFFSETS =
     [  0,  0, -3,  0, 0,  0, 0, 0, 0, 0 ]
   ]
 
-tenholes = angular.module('tenholes', [])
+tenholes = angular.module('tenholes', ['ui.bootstrap'])
 tenholes.controller('MainController', ['$scope', ($scope) ->
   $scope.OFFSETS = OFFSETS
   $scope.SYLLABLES = SYLLABLES

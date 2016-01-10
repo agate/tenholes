@@ -1,5 +1,10 @@
-h1, h3
+body
+  font-family: 'Sansita One', cursive
+
+h1
+  font-family: 'Luckiest Guy', cursive
   text-align: center
+  color: #c9302c
 
 table
   border-collapse: collapse
@@ -13,21 +18,15 @@ table
   tr.bended-blow, tr.bended-draw
     td
       border: 0
-      color: DarkMagenta
-
-  tr.body
-    td
-      font-weight: bold
-      font-family: Arial,sans-serif
-
+      color: #c9302c
   td
     border: 1px solid black
     margin: 0
-    .hole, .hole-head
-        line-height: 30px
-        text-align: center
-    .hole-head
-      width: auto
-      padding-left: 10px
-      padding-right: 10px
-    .hole-bend
+    .hole
+      line-height: 30px
+      text-align: center
+    &.desc
+      border: 0
+      .hole
+        padding-left: 10px
+        padding-right: 10px
