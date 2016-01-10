@@ -37,7 +37,7 @@ block content
       tr.body
         td.desc
           .hole Hole
-        td(ng-repeat="offset in OFFSETS.blow")
+        td.body(ng-repeat="offset in OFFSETS.blow")
           .hole {{$index+1}}
       tr.draw
         td.desc
