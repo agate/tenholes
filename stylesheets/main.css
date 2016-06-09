@@ -22,13 +22,17 @@ body {
     border-radius: 50%;
     color: white; }
 
+.body {
+  margin-bottom: 60px; }
+
 .footer {
   text-align: center;
-  padding: 20px 0;
+  padding: 6px 0;
   width: 100%;
   position: fixed;
   bottom: 0;
-  border-top: 1px solid #eee; }
+  border-top: 1px solid #eee;
+  background-color: white; }
   .footer a {
     color: #c9302c; }
 
