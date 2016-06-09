@@ -1,10 +1,32 @@
 body
   font-family: 'Sansita One', cursive
 
-h1
-  font-family: 'Luckiest Guy', cursive
+.header
   text-align: center
-  color: #c9302c
+  h1
+    font-family: 'Luckiest Guy', cursive
+    color: #c9302c
+    position: relative
+    display: inline-block
+  .tune-badge:after
+    content: "C"
+    position: absolute
+    background: #d9534f
+    height: 2rem
+    top: -1rem
+    right: -2rem
+    width: 2rem
+    text-align: center
+    line-height: 2rem
+    font-size: 1rem
+    border-radius: 50%
+    color: white
+
+.footer
+  text-align: center
+  margin-bottom: 20px
+  a
+    color: #c9302c
 
 table
   border-collapse: collapse

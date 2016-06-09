@@ -7,9 +7,7 @@ block stylesheets
   link(href="./stylesheets/main.css" media="all" rel="stylesheet")
 
 block content
-  .container(ng-app="tenholes" ng-controller="MainController")
-    h1 Ten Holes
-
+  .body.container(ng-app="tenholes" ng-controller="MainController")
     p
       .btn-group.btn-group-justified
         label.btn.btn-danger(value="alphabet" ng-model="displayType" uib-btn-radio="'alphabet'") Alphabet
