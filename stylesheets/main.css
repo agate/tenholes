@@ -1,0 +1,52 @@
+body {
+  font-family: 'Sansita One', cursive; }
+
+.header {
+  text-align: center; }
+  .header h1 {
+    font-family: 'Luckiest Guy', cursive;
+    color: #c9302c;
+    position: relative;
+    display: inline-block; }
+  .header .tune-badge:after {
+    content: "C";
+    position: absolute;
+    background: #d9534f;
+    height: 2rem;
+    top: -1rem;
+    right: -2rem;
+    width: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 1rem;
+    border-radius: 50%;
+    color: white; }
+
+.footer {
+  text-align: center;
+  margin-bottom: 20px; }
+  .footer a {
+    color: #c9302c; }
+
+table {
+  border-collapse: collapse;
+  width: 100%; }
+  table tr.bended-blow td {
+    vertical-align: bottom; }
+  table tr.bended-draw td {
+    vertical-align: top; }
+  table tr.bended-blow td, table tr.bended-draw td {
+    border: 0;
+    color: #c9302c; }
+  table td {
+    border: 1px solid black;
+    margin: 0; }
+    table td .hole {
+      line-height: 30px;
+      text-align: center; }
+    table td.desc {
+      border: 0; }
+    table td.body {
+      width: 9%;
+      color: #fff;
+      background-color: #333; }
