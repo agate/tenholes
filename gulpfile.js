@@ -4,7 +4,7 @@ var gulp = module.exports.gulp = exports.gulp = require('gulp'),
     del = require('del'),
     sass = require('gulp-sass'),
     coffee = require('gulp-coffee'),
-    jade = require('gulp-jade');
+    pug = require('gulp-pug');
 
 gulp.task('clean', function (cb) {
   del(['dest'], cb);
@@ -40,13 +40,13 @@ gulp.task('cssLib', function () {
 });
 
  
-gulp.task('jade', function() {
-  return gulp.src('src/views/*.jade')
-             .pipe(jade())
+gulp.task('pug', function() {
+  return gulp.src('src/views/*.pug')
+             .pipe(pug())
              .pipe(gulp.dest('dest/'));
 });
 
-gulp.task('build', ['clean', 'js', 'css', 'jade']);
+gulp.task('build', ['clean', 'js', 'css', 'pug']);
 gulp.task('default', function () {
   gulp.run('build');
   gulp.watch(['src/**/*'], ['build']);
